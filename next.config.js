@@ -1,6 +1,7 @@
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  reactStrictMode: false,
   experimental: {
     turbo: true,
     // urlImports: ['https://cdn.skypack.dev'],

@@ -9,6 +9,7 @@ import { MultiPolygon, Polygon, area } from "@turf/turf";
 import { DataTable } from "./components/DataTable";
 import geoPolygonNormalizer from "./lib/geoPolygonNormalizer";
 import { About } from "./components/About";
+import { GeoJSONEditor } from "./components/GeoJSONEditor";
 
 const m2ToHa = (m2: number): number => m2 * 0.0001;
 
@@ -21,21 +22,20 @@ const haFormatter = Intl.NumberFormat("en", {
 
 const digits = new Intl.NumberFormat("en-DE", { maximumFractionDigits: 3 });
 
-export const revalidate = 3600
+export const revalidate = 3600;
 
 export default function Home() {
   const textRef = useRef<HTMLTextAreaElement>();
   const [errorMessage, setErrorMessage] = useState<null | string>(null);
   const [statusMessage, setStatusMessage] = useState<null | string>(null);
   const [polygon, setPolygon] = useState<Polygon | MultiPolygon | null>(null);
+  const [jsonString, setJsonString] = useState<string | null>(null);
   const [dataResult, setDataResult] = useState<number[]>([]);
   const handleOnClick = async () => {
     if (
-      textRef.current &&
-      textRef.current.value &&
-      textRef.current.value.trim().length > 0
+      jsonString
     ) {
-      const data = geoPolygonNormalizer(textRef.current.value);
+      const data = geoPolygonNormalizer(jsonString);
       if ("error" in data) {
         return setErrorMessage(data.error);
       }
@@ -45,14 +45,14 @@ export default function Home() {
 
         try {
           setStatusMessage("Fetching GeoTIFF metadata range...");
-          const raster = await parse(new URL( GSOCMapTiffUrl, self.location.href ).href)
-          console.log(raster);
+          const raster = await parse(
+            new URL(GSOCMapTiffUrl, self.location.href).href
+          );
           setStatusMessage(
             "Fetched GeoTIFF metadata range, fetching raster range and computing..."
           );
           const results = await mean(raster, data.result);
           setStatusMessage("Raster computation complete!");
-          console.log(results);
           setDataResult(results);
         } catch (err) {
           return setErrorMessage(
@@ -94,12 +94,7 @@ export default function Home() {
       <div>
         <h2>Enter GeoJSON Feature/Geometry</h2>
         <div className="mt-6 mb-6">
-          <textarea
-            className="border border-black  w-[100%] h-[300px]"
-            defaultValue={defaultGeo}
-            // @ts-expect-error fix later
-            ref={textRef}
-          ></textarea>
+          <GeoJSONEditor initialValue={defaultGeo} setCode={setJsonString} />
           <button
             className="mt-6 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded disabled:bg-blue-200 disabled:hover:bg-blue-200"
             onClick={() => handleOnClick()}

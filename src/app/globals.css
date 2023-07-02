@@ -26,3 +26,6 @@ body {
     @apply text-blue-800;
   }
 }
+
+.cm-editor, .cm-wrap { height: 80vh; display: block }
+.cm-scroller { overflow: auto }
