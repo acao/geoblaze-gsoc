@@ -1,0 +1,6 @@
+{
+  "rewrites": [{
+    "source": "/googlestore/:path*",
+    "destination": "https://storage.googleapis.com/:path*"
+  }]
+}
