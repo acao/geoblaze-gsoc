@@ -1,10 +1,13 @@
 "use client";
 import { useRef, useState } from "react";
+// todo: finish types PR
+// @ts-expect-error
 import { mean, parse } from "geoblaze";
 import { GSOCMapTiffUrl, defaultGeo } from "./constants";
 import { MultiPolygon, Polygon, area } from "@turf/turf";
 import { DataTable } from "./components/DataTable";
 import geoPolygonNormalizer from "./lib/geoPolygonNormalizer";
+import { About } from "./components/About";
 
 const m2ToHa = (m2: number): number => m2 * 0.0001;
 
@@ -50,6 +53,7 @@ export default function Home() {
           setDataResult(results);
         } catch (err) {
           return setErrorMessage(
+            // @ts-expect-error
             `There was an error with Geoblaze: \n ${err.message}`
           );
         }
@@ -90,6 +94,7 @@ export default function Home() {
           <textarea
             className="border border-black  w-[100%] h-[300px]"
             defaultValue={defaultGeo}
+            // @ts-expect-error fix later
             ref={textRef}
           ></textarea>
           <button
@@ -121,32 +126,11 @@ export default function Home() {
         {result && (
           <div>
             <h2>Results</h2>
-
+              {/* @ts-expect-error fix lagter */}
             <DataTable data={data} />
           </div>
         )}
-        <div>
-          <h2>About</h2>
-          <p className="mt-6">
-            The source data used for this computation comes from the{" "}
-            <a href="https://data.apps.fao.org/glosis/?share=f-e6875d44-d798-4e9a-b84b-48916cf9e4d8">
-              FAO Global Soil Organic Carbon Map v1.5 (GSOC)
-            </a>
-          </p>
-          <p>
-            The tool was created by{" "}
-            <a href="https://rikki.dev">Rikki Schulte</a> for fun, using{" "}
-            <a href="https://geoblaze.io/">GeoBlaze</a>, powered by{" "}
-            <a href="https://geotiffjs.github.io/">GeoTIFF.js</a>
-          </p>
-          <p>
-            
-            <a href="https://creativecommons.org/licenses/by-nc/3.0/">
-              CC BY-NC 3.0
-            </a>
-            &copy;Rikki Schulte&nbsp;
-          </p>
-        </div>
+        <About />
       </div>
     </div>
   );
