@@ -1,7 +1,11 @@
+const withOffline = require('next-offline')
+
 /** @type {import('next').NextConfig} */
-const nextConfig = {
+const nextConfig = withOffline({
   experimental: {
-    turbo: true
+    turbo: true,
+    // urlImports: ['https://cdn.skypack.dev'],
+    optimisticClientCache: true
   },
   async rewrites() {
     return [
@@ -17,6 +21,19 @@ const nextConfig = {
   //   defaultLocale: 'en',
   //   locales: ['en', 'de', 'fr', 'pr'],
   // },
-};
+  
+  runtimeCaching: [
+    {
+      urlPattern: /^https?.*/,
+      handler: 'NetworkFirst',
+      options: {
+        cacheName: 'offlineCache',
+        expiration: {
+          maxEntries: 200
+        }
+      }
+    }
+  ]
+});
 
 module.exports = nextConfig;

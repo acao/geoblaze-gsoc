@@ -1,4 +1,5 @@
 "use client";
+
 import { useRef, useState } from "react";
 // todo: finish types PR
 // @ts-expect-error
@@ -19,6 +20,8 @@ const haFormatter = Intl.NumberFormat("en", {
 });
 
 const digits = new Intl.NumberFormat("en-DE", { maximumFractionDigits: 3 });
+
+export const revalidate = 3600
 
 export default function Home() {
   const textRef = useRef<HTMLTextAreaElement>();
