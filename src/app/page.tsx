@@ -42,8 +42,8 @@ export default function Home() {
 
         try {
           setStatusMessage("Fetching GeoTIFF metadata range...");
-          const raster = await parse(GSOCMapTiffUrl);
-          console.log(raster)
+          const raster = await parse(new URL( GSOCMapTiffUrl, self.location.href ).href)
+          console.log(raster);
           setStatusMessage(
             "Fetched GeoTIFF metadata range, fetching raster range and computing..."
           );
@@ -126,7 +126,7 @@ export default function Home() {
         {result && (
           <div>
             <h2>Results</h2>
-              {/* @ts-expect-error fix lagter */}
+            {/* @ts-expect-error fix lagter */}
             <DataTable data={data} />
           </div>
         )}

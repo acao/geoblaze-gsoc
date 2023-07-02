@@ -1,5 +1,5 @@
 export const GSOCMapTiffUrl =
-  "http://localhost:3000/googlestore/fao-maps-catalog-data/geonetwork/gsoc/GSOCmap/GSOCmap1.5.0.tif";
+  "/googlestore/fao-maps-catalog-data/geonetwork/gsoc/GSOCmap/GSOCmap1.5.0.tif";
 
 // Uma amostra geojson da Reserva Biológica do Rio Trombetas, Brasil
 export const defaultGeo = JSON.stringify(
