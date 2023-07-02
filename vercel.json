@@ -1,6 +1,8 @@
 {
-  "rewrites": [{
-    "source": "/googlestore/:path*",
-    "destination": "https://storage.googleapis.com/:path*"
-  }]
+  "rewrites": [
+    {
+      "source": "/googlestore/:path*",
+      "destination": "https://storage.googleapis.com/:path*"
+    }
+  ]
 }
