@@ -30,38 +30,6 @@ export default function Home() {
   const [polygon, setPolygon] = useState<Polygon | MultiPolygon | null>(null);
   const [jsonString, setJsonString] = useState<string | null>(null);
   const [dataResult, setDataResult] = useState<number[]>([]);
-  const handleOnClick = async () => {
-    if (
-      jsonString
-    ) {
-      const data = geoPolygonNormalizer(jsonString);
-      if ("error" in data) {
-        return setErrorMessage(data.error);
-      }
-      if (data.result) {
-        setPolygon(data.result);
-        setStatusMessage("Valid GeoJSON");
-
-        try {
-          setStatusMessage("Fetching GeoTIFF metadata range...");
-          const raster = await parse(
-            new URL(GSOCMapTiffUrl, self.location.href).href
-          );
-          setStatusMessage(
-            "Fetched GeoTIFF metadata range, fetching raster range and computing..."
-          );
-          const results = await mean(raster, data.result);
-          setStatusMessage("Raster computation complete!");
-          setDataResult(results);
-        } catch (err) {
-          return setErrorMessage(
-            // @ts-expect-error
-            `There was an error with Geoblaze: \n ${err.message}`
-          );
-        }
-      }
-    }
-  };
   const data = [];
   const totalArea = polygon && m2ToHa(area(polygon));
   const result = dataResult[0];
@@ -88,12 +56,49 @@ export default function Home() {
     !errorMessage && message && message !== "Raster computation complete!"
   );
 
+  const handleOnClick = async () => {
+    if (jsonString) {
+      const data = geoPolygonNormalizer(jsonString);
+      if ("error" in data) {
+        return setErrorMessage(data.error);
+      }
+      if (data.result) {
+        setPolygon(data.result);
+        setStatusMessage("Valid GeoJSON");
+        if (totalArea && totalArea > 100) {
+          setErrorMessage(
+            "Disabled for areas over 100 hectares.\nIf you'd like to do heavy weight processing, just fork and deploy your own instance on zeit!"
+          );
+        }
+
+        try {
+          setStatusMessage("Fetching GeoTIFF metadata range...");
+          const raster = await parse(
+            new URL(GSOCMapTiffUrl, self.location.href).href
+          );
+          setStatusMessage(
+            "Fetched GeoTIFF metadata range, fetching raster range and computing..."
+          );
+          const results = await mean(raster, data.result);
+          setStatusMessage("Raster computation complete!");
+          setDataResult(results);
+        } catch (err) {
+          return setErrorMessage(
+            // @ts-expect-error
+            `There was an error with Geoblaze: \n ${err.message}`
+          );
+        }
+      }
+    }
+  };
+
   return (
     <div className="App m-6 grid md:grid-cols-2 md:grid-rows-1 md:gap-6 gap-0 grid-cols-1">
       <div>
         <h2>Enter GeoJSON Feature/Geometry</h2>
         <div className="mt-6 mb-6">
           <GeoJSONEditor initialValue={defaultGeo} setCode={setJsonString} />
+          <div className="text-right">
           <button
             className="mt-6 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded disabled:bg-blue-200 disabled:hover:bg-blue-200"
             onClick={() => handleOnClick()}
@@ -102,6 +107,7 @@ export default function Home() {
           >
             Compute SOC
           </button>
+          </div>
         </div>
       </div>
       <div>
