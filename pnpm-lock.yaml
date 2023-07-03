@@ -17,6 +17,9 @@ dependencies:
   '@codemirror/language':
     specifier: 6.0.0
     version: 6.0.0
+  '@codemirror/lint':
+    specifier: 6.0.0
+    version: 6.0.0
   '@codemirror/state':
     specifier: 6.1.0
     version: 6.1.0
@@ -44,9 +47,6 @@ dependencies:
   autoprefixer:
     specifier: 10.4.14
     version: 10.4.14(postcss@8.4.24)
-  codemirror:
-    specifier: ^6.0.1
-    version: 6.0.1
   encoding:
     specifier: ^0.1.13
     version: 0.1.13
@@ -133,16 +133,8 @@ packages:
       style-mod: 4.0.3
     dev: false
 
-  /@codemirror/lint@6.3.0:
-    resolution: {integrity: sha512-tzxOVQNoDhhwFNfcTO2IB74wQoWarARcH6gv3YufPpiJ9yhcb7zD6JCkO5+FWARskqRFc8GFa6E+wUyOvADl5A==}
-    dependencies:
-      '@codemirror/state': 6.1.0
-      '@codemirror/view': 6.1.2
-      crelt: 1.0.6
-    dev: false
-
-  /@codemirror/search@6.5.0:
-    resolution: {integrity: sha512-64/M40YeJPToKvGO6p3fijo2vwUEj4nACEAXElCaYQ50HrXSvRaK+NHEhSh73WFBGdvIdhrV+lL9PdJy2RfCYA==}
+  /@codemirror/lint@6.0.0:
+    resolution: {integrity: sha512-nUUXcJW1Xp54kNs+a1ToPLK8MadO0rMTnJB8Zk4Z8gBdrN0kqV7uvUraU/T2yqg+grDNR38Vmy/MrhQN/RgwiA==}
     dependencies:
       '@codemirror/state': 6.1.0
       '@codemirror/view': 6.1.2
@@ -2267,18 +2259,6 @@ packages:
 
   /client-only@0.0.1:
     resolution: {integrity: sha512-IV3Ou0jSMzZrd3pZ48nLkT9DA7Ag1pnPzaiQhpW7c3RbcqqzvzzVu+L8gfqMp/8IM2MQtSiqaCxrrcfu8I8rMA==}
-    dev: false
-
-  /codemirror@6.0.1:
-    resolution: {integrity: sha512-J8j+nZ+CdWmIeFIGXEFbFPtpiYacFMDR8GlHK3IyHQJMCaVRfGx9NT+Hxivv1ckLWPvNdZqndbr/7lVhrf/Svg==}
-    dependencies:
-      '@codemirror/autocomplete': 6.0.0
-      '@codemirror/commands': 6.0.0
-      '@codemirror/language': 6.0.0
-      '@codemirror/lint': 6.3.0
-      '@codemirror/search': 6.5.0
-      '@codemirror/state': 6.1.0
-      '@codemirror/view': 6.1.2
     dev: false
 
   /collection-visit@1.0.0:
@@ -5843,7 +5823,7 @@ packages:
     engines: {node: '>=4.2.6'}
     deprecated: terraformer is deprecated and no longer supported. Please use @terraformer/arcgis.
     optionalDependencies:
-      '@types/geojson': 1.0.6
+      '@types/geojson': 7946.0.8
     dev: false
 
   /terser-webpack-plugin@1.4.5(webpack@4.46.0):
