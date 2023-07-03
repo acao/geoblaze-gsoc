@@ -15,7 +15,6 @@ export const DataTable = forwardRef<
         {data.map((r, i) => (
           <tr
             key={`table-row-${i}`}
-            className={`${i % 2 ? "bg-white" : "bg-gray-100"}`}
           >
             <td className="px-2 py-2 font-bold text-right">{r[0]}</td>
             <td className="px-2 py-2">{r[1]}</td>

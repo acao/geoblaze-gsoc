@@ -8,7 +8,7 @@
   --background-end-rgb: 255, 255, 255;
 }
 
-@media (prefers-color-scheme: light) {
+@media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 255, 255, 255;
     --background-start-rgb: 0, 0, 0;
@@ -17,8 +17,8 @@
 }
 
 body {
-  color: rgb(var(--background-start-rgb));
-  background: --background-end-rgb;
+  color: rgb(var(--foreground-rgb));
+  background: rgb(var(--background-end-rgb));
 }
 
 @layer base {
@@ -29,7 +29,7 @@ body {
 
 .cm-editor,
 .cm-wrap {
-  height: 80vh;
+  height: 50vh;
   display: block;
 }
 .cm-scroller {
