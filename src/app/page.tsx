@@ -155,13 +155,15 @@ export default function Home() {
               <a href="https://github.com/acao/geoblaze-gsoc">
                 the source for this project on github
               </a>
-              <p>
-                This project was inspired by my work at{" "}
-                <a href="https://recarb.earth">recarb.earth</a>, see the tool we
-                built there if you want a much more sophisticated analysis that
-                also provides predictions using a climate model developed by researchers!
-              </p>
             </p>
+            <p>
+              This project was inspired by my work at{" "}
+              <a href="https://recarb.earth">recarb.earth</a>, see the tool we
+              built there if you want a much more sophisticated analysis that
+              also provides predictions using a climate model developed by
+              researchers!
+            </p>
+
             <p>
               <Link href="/about">Learn more about the project</Link>
             </p>
