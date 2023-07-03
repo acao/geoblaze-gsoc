@@ -1,9 +1,10 @@
 import React, { useRef, useEffect, useState } from "react";
 import { EditorState } from "@codemirror/state";
-import { EditorView, lineNumbers } from "@codemirror/view";
+import { EditorView, lineNumbers, keymap } from "@codemirror/view";
 import { history } from "@codemirror/commands";
+import { vscodeKeymap } from "@replit/codemirror-vscode-keymap";
 import { autocompletion, closeBrackets } from "@codemirror/autocomplete";
-import { bracketMatching, syntaxHighlighting } from "@codemirror/language";
+import { bracketMatching, syntaxHighlighting, codeFolding } from "@codemirror/language";
 import { oneDarkHighlightStyle, oneDark } from "@codemirror/theme-one-dark";
 import { json, jsonParseLinter } from "@codemirror/lang-json";
 import { linter } from "@codemirror/lint";
@@ -33,6 +34,10 @@ export const GeoJSONEditor = ({
         json(),
         onUpdate,
         linter(jsonParseLinter()),
+        keymap.of(vscodeKeymap),
+        codeFolding({
+            placeholderText: '...'
+        })
       ],
     });
 

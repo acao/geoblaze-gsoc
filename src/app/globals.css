@@ -27,5 +27,12 @@ body {
   }
 }
 
-.cm-editor, .cm-wrap { height: 80vh; display: block }
-.cm-scroller { overflow: auto }
+.cm-editor,
+.cm-wrap {
+  height: 80vh;
+  display: block;
+}
+.cm-scroller {
+  overflow: auto;
+  padding: 6px;
+}
