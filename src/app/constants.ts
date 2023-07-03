@@ -45,3 +45,5 @@ export const defaultGeo = JSON.stringify(
   null,
   2
 );
+
+export const FAOGSOCSourceLink ="https://data.apps.fao.org/glosis/?share=f-e6875d44-d798-4e9a-b84b-48916cf9e4d8"

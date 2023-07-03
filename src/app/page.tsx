@@ -4,12 +4,12 @@ import { useRef, useState } from "react";
 // todo: finish types PR
 // @ts-expect-error
 import { mean, parse } from "geoblaze";
-import { GSOCMapTiffUrl, defaultGeo } from "./constants";
+import { FAOGSOCSourceLink, GSOCMapTiffUrl, defaultGeo } from "./constants";
 import { MultiPolygon, Polygon, area } from "@turf/turf";
 import { DataTable } from "./components/DataTable";
 import geoPolygonNormalizer from "./lib/geoPolygonNormalizer";
-import { About } from "./components/About";
 import { GeoJSONEditor } from "./components/GeoJSONEditor";
+import Link from "next/link";
 
 const m2ToHa = (m2: number): number => m2 * 0.0001;
 
@@ -93,20 +93,20 @@ export default function Home() {
   };
 
   return (
-    <div className="App m-6 grid md:grid-cols-2 md:grid-rows-1 md:gap-6 gap-0 grid-cols-1">
+    <div className="grid md:grid-cols-2 md:grid-rows-1 md:gap-6 gap-0 grid-cols-1">
       <div>
         <h2>Enter GeoJSON Feature/Geometry</h2>
         <div className="mt-6 mb-6">
           <GeoJSONEditor initialValue={defaultGeo} setCode={setJsonString} />
           <div className="text-right">
-          <button
-            className="mt-6 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded disabled:bg-blue-200 disabled:hover:bg-blue-200"
-            onClick={() => handleOnClick()}
-            disabled={buttonDisabled}
-            aria-disabled={buttonDisabled}
-          >
-            Compute SOC
-          </button>
+            <button
+              className="mt-6 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded disabled:bg-blue-200 disabled:hover:bg-blue-200"
+              onClick={() => handleOnClick()}
+              disabled={buttonDisabled}
+              aria-disabled={buttonDisabled}
+            >
+              Compute SOC
+            </button>
           </div>
         </div>
       </div>
@@ -133,7 +133,32 @@ export default function Home() {
             <DataTable data={data} />
           </div>
         )}
-        <About />
+        <div>
+          <h2>About</h2>
+          <div className="mt-6">
+          <p>
+            This tool computes the estimated{" "}
+            <a href="https://en.wikipedia.org/wiki/Soil_carbon#Organic_carbon">
+              soil organic carbon (SOC)
+            </a>{" "}
+            for any area of interest (under 100 hectares for now) using the{" "}
+            <a href={FAOGSOCSourceLink}>FAO GSOC Map v1.5 data</a>
+          </p>
+          <h2>Credits</h2>
+          <p>
+            The tool was created by{" "}
+            <a href="https://rikki.dev">Rikki Schulte</a> for fun and for the
+            earth, using <a href="https://geoblaze.io/">GeoBlaze</a>, powered by{" "}
+            <a href="https://geotiffjs.github.io/">GeoTIFF.js</a>. Check out{" "}
+            <a href="https://github.com/acao/geoblaze-gsoc">
+              the source on github
+            </a>
+          </p>
+          <p>
+            <Link href="/about">Learn more about the project</Link>
+          </p>
+          </div>
+        </div>
       </div>
     </div>
   );
