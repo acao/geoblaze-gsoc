@@ -137,24 +137,30 @@ export default function Home() {
           <h2>About</h2>
           <div className="mt-6">
             <p>
-              This tool computes the estimated{" "}
+              This tool computes the estimated&nbsp;
               <a href="https://en.wikipedia.org/wiki/Soil_carbon#Organic_carbon">
                 soil organic carbon (SOC)
-              </a>{" "}
-              for any area of interest (under 100 hectares for now) using the{" "}
+              </a>
+              &nbsp;for any area of interest (under 100 hectares for now) using
+              the&nbsp;
               <a href={FAOGSOCSourceLink}>FAO GSOC Map v1.5 data</a>
             </p>
             <h2>Credits</h2>
             <p>
-              The tool was created by{" "}
+              The tool was created by&nbsp;
               <a href="https://rikki.dev">Rikki Schulte</a> for fun and for the
               earth, using <a href="https://geoblaze.io/">GeoBlaze</a>, powered
-              by <a href="https://geotiffjs.github.io/">GeoTIFF.js</a>. Inspired
-              by my work at <a href="https://recarb.earth">recarb.earth</a>{" "}
-              Check out{" "}
+              by <a href="https://geotiffjs.github.io/">GeoTIFF.js</a>
+              .&nbsp;Check out&nbsp;
               <a href="https://github.com/acao/geoblaze-gsoc">
-                the source on github
+                the source for this project on github
               </a>
+              <p>
+                This project was inspired by my work at{" "}
+                <a href="https://recarb.earth">recarb.earth</a>, see the tool we
+                built there if you want a much more sophisticated analysis that
+                also provides predictions using a climate model developed by researchers!
+              </p>
             </p>
             <p>
               <Link href="/about">Learn more about the project</Link>
