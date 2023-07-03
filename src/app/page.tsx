@@ -136,27 +136,29 @@ export default function Home() {
         <div>
           <h2>About</h2>
           <div className="mt-6">
-          <p>
-            This tool computes the estimated{" "}
-            <a href="https://en.wikipedia.org/wiki/Soil_carbon#Organic_carbon">
-              soil organic carbon (SOC)
-            </a>{" "}
-            for any area of interest (under 100 hectares for now) using the{" "}
-            <a href={FAOGSOCSourceLink}>FAO GSOC Map v1.5 data</a>
-          </p>
-          <h2>Credits</h2>
-          <p>
-            The tool was created by{" "}
-            <a href="https://rikki.dev">Rikki Schulte</a> for fun and for the
-            earth, using <a href="https://geoblaze.io/">GeoBlaze</a>, powered by{" "}
-            <a href="https://geotiffjs.github.io/">GeoTIFF.js</a>. Check out{" "}
-            <a href="https://github.com/acao/geoblaze-gsoc">
-              the source on github
-            </a>
-          </p>
-          <p>
-            <Link href="/about">Learn more about the project</Link>
-          </p>
+            <p>
+              This tool computes the estimated{" "}
+              <a href="https://en.wikipedia.org/wiki/Soil_carbon#Organic_carbon">
+                soil organic carbon (SOC)
+              </a>{" "}
+              for any area of interest (under 100 hectares for now) using the{" "}
+              <a href={FAOGSOCSourceLink}>FAO GSOC Map v1.5 data</a>
+            </p>
+            <h2>Credits</h2>
+            <p>
+              The tool was created by{" "}
+              <a href="https://rikki.dev">Rikki Schulte</a> for fun and for the
+              earth, using <a href="https://geoblaze.io/">GeoBlaze</a>, powered
+              by <a href="https://geotiffjs.github.io/">GeoTIFF.js</a>. Inspired
+              by my work at <a href="https://recarb.earth">recarb.earth</a>{" "}
+              Check out{" "}
+              <a href="https://github.com/acao/geoblaze-gsoc">
+                the source on github
+              </a>
+            </p>
+            <p>
+              <Link href="/about">Learn more about the project</Link>
+            </p>
           </div>
         </div>
       </div>
