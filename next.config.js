@@ -1,11 +1,10 @@
-
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: false,
   experimental: {
-    turbo: true,
+    turbo: {},
     // urlImports: ['https://cdn.skypack.dev'],
-    optimisticClientCache: true
+    optimisticClientCache: true,
   },
   async rewrites() {
     return [
@@ -21,7 +20,6 @@ const nextConfig = {
   //   defaultLocale: 'en',
   //   locales: ['en', 'de', 'fr', 'pr'],
   // },
-
 };
 
 module.exports = nextConfig;

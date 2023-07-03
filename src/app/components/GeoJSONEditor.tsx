@@ -4,7 +4,11 @@ import { EditorView, lineNumbers, keymap } from "@codemirror/view";
 import { history } from "@codemirror/commands";
 import { vscodeKeymap } from "@replit/codemirror-vscode-keymap";
 import { autocompletion, closeBrackets } from "@codemirror/autocomplete";
-import { bracketMatching, syntaxHighlighting, codeFolding } from "@codemirror/language";
+import {
+  bracketMatching,
+  syntaxHighlighting,
+  codeFolding,
+} from "@codemirror/language";
 import { oneDarkHighlightStyle, oneDark } from "@codemirror/theme-one-dark";
 import { json, jsonParseLinter } from "@codemirror/lang-json";
 import { linter } from "@codemirror/lint";
@@ -36,8 +40,8 @@ export const GeoJSONEditor = ({
         linter(jsonParseLinter()),
         keymap.of(vscodeKeymap),
         codeFolding({
-            placeholderText: '...'
-        })
+          placeholderText: "...",
+        }),
       ],
     });
 
@@ -51,5 +55,10 @@ export const GeoJSONEditor = ({
       view.destroy();
     };
   }, []);
-  return <div id="editor" />;
+  return (
+    <>
+      {!isLoaded && <div className="h-[80vh]">Loading GeoJSON editor...</div>}
+      <div id="editor" />
+    </>
+  );
 };
