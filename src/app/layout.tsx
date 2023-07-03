@@ -1,5 +1,4 @@
 import "./globals.css";
-import { headers } from "next/headers";
 import { Inter } from "next/font/google";
 import Link from "next/link";
 
@@ -16,9 +15,6 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const headersList = headers();
-  // bah this only works for SSR anyways
-  const path = headersList.get("x-pathname");
   return (
     <html lang="en">
       <body className={`${inter.className} App p-6`}>
@@ -26,19 +22,11 @@ export default function RootLayout({
         <footer>
           <nav>
             <ul className="list-none">
-              <li
-                className={`inline-block p-3 pl-0 ${
-                  path === "/" && "font-bold"
-                }`}
-              >
+              <li className={`inline-block p-3 pl-0`}>
                 {" "}
                 <Link href="/">Home</Link>
               </li>
-              <li
-                className={`inline-block p-3 ${
-                  path === "/about" && "font-bold"
-                }`}
-              >
+              <li className={`inline-block p-3`}>
                 <Link href="/about">About</Link>
               </li>
             </ul>
