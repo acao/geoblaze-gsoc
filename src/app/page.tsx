@@ -1,6 +1,7 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useState } from "react";
+
 // todo: finish types PR
 // @ts-expect-error
 import { mean, parse } from "geoblaze";
@@ -10,6 +11,7 @@ import { DataTable } from "./components/DataTable";
 import geoPolygonNormalizer from "./lib/geoPolygonNormalizer";
 import { GeoJSONEditor } from "./components/GeoJSONEditor";
 import Link from "next/link";
+import Head from "next/head";
 
 const m2ToHa = (m2: number): number => m2 * 0.0001;
 
@@ -94,6 +96,12 @@ export default function Home() {
 
   return (
     <div className="grid md:grid-cols-2 md:grid-rows-1 md:gap-6 gap-0 grid-cols-1">
+      <Head>
+        <meta
+          property="og:image"
+          content="https://geoblaze-gsoc.vercel.app/screenshot.png"
+        />
+      </Head>
       <div>
         <h2>Enter GeoJSON Feature/Geometry</h2>
         <div className="mt-6 mb-6">

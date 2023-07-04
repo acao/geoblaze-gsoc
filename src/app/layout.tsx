@@ -1,13 +1,37 @@
+import { Metadata } from "next";
 import "./globals.css";
 import { Inter } from "next/font/google";
 import Link from "next/link";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export const metadata = {
-  title: "GeoBlaze GSOC Estimator",
-  description:
-    "Performs a simple raster analysis to predict Soil Organic Carbon using FAO data",
+const title = "GeoBlaze GSOC Estimator Example";
+
+const description =
+  "Performs a simple raster analysis to predict Soil Organic Carbon using FAO data";
+
+const images = "https://geoblaze-gsoc.vercel.app/screenshot.png";
+
+const authors = "Rikki Schulte";
+
+export const metadata: Metadata = {
+  title,
+  description,
+  authors: { name: authors, url: "https://rikki.dev" },
+  openGraph: {
+    images,
+    title,
+    description,
+    authors,
+  },
+  twitter: {
+    images,
+    title,
+    description,
+  },
+  other: {
+    "ostrio-domain": "qKjXT6BD49K6A_Y9CNg4xJu13VR9EDtFGp3evDbYeVO",
+  },
 };
 
 export default function RootLayout({
