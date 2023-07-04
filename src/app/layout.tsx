@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import "./globals.css";
 import { Inter } from "next/font/google";
 import Link from "next/link";
+import Script from "next/script";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -29,9 +30,6 @@ export const metadata: Metadata = {
     title,
     description,
   },
-  other: {
-    "ostrio-domain": "qKjXT6BD49K6A_Y9CNg4xJu13VR9EDtFGp3evDbYeVO",
-  },
 };
 
 export default function RootLayout({
@@ -41,6 +39,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <Script
+        async
+        defer
+        type="text/javascript"
+        src="https://analytics.ostr.io/qYJ5Qerm82QkH3ZJh.js"
+        strategy="worker"
+      />
+
       <body className={`${inter.className} App p-6`}>
         <main>{children}</main>
         <footer>
