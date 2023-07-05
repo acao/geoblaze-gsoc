@@ -15,9 +15,9 @@ const authors = "Rikki Schulte";
 export const metadata: Metadata = {
   title,
   description,
-  authors: { 
-    name: authors, 
-    url: "https://rikki.dev"
+  authors: {
+    name: authors,
+    url: "https://rikki.dev",
   },
   openGraph: {
     images,
@@ -44,7 +44,6 @@ export default function RootLayout({
         defer
         type="text/javascript"
         src="https://analytics.ostr.io/qYJ5Qerm82QkH3ZJh.js"
-        strategy="lazyOnload"
       ></Script>
 
       <body className={`${inter.className} App p-6`}>
