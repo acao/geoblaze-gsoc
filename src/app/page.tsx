@@ -75,12 +75,18 @@ export default function Home() {
 
         try {
           setStatusMessage("Fetching GeoTIFF metadata range...");
+          /**
+           * Fetching the metadata using a relative URL over the proxy to google storage
+           */
           const raster = await parse(
             new URL(GSOCMapTiffUrl, self.location.href).href
           );
           setStatusMessage(
             "Fetched GeoTIFF metadata range, fetching raster range and computing..."
           );
+          /**
+           * this is it! you can also pass the URL as the first argument here. There's really not much to it
+           */
           const results = await mean(raster, data.result);
           setStatusMessage("Raster computation complete!");
           setDataResult(results);
