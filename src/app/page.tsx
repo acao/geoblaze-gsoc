@@ -169,8 +169,8 @@ export default function Home() {
               This project was inspired by my work at{" "}
               <a href="https://recarb.earth">recarb.earth</a>, see the tool we
               built there if you want a much more sophisticated analysis that
-              also provides predictions using a climate model developed by
-              researchers!
+              also provides predictions using a climate model developed by some
+              outstanding climate researchers!
             </p>
 
             <p>
