@@ -7,18 +7,18 @@ import Script from "next/script";
 const inter = Inter({ subsets: ["latin"] });
 
 const title = "GeoBlaze GSOC Estimator Example";
-
 const description =
   "Performs a simple raster analysis to predict Soil Organic Carbon using FAO data";
-
 const images = "https://geoblaze-gsoc.vercel.app/screenshot.png";
-
 const authors = "Rikki Schulte";
 
 export const metadata: Metadata = {
   title,
   description,
-  authors: { name: authors, url: "https://rikki.dev" },
+  authors: { 
+    name: authors, 
+    url: "https://rikki.dev"
+  },
   openGraph: {
     images,
     title,
@@ -44,8 +44,8 @@ export default function RootLayout({
         defer
         type="text/javascript"
         src="https://analytics.ostr.io/qYJ5Qerm82QkH3ZJh.js"
-        strategy="worker"
-      />
+        strategy="lazyOnload"
+      ></Script>
 
       <body className={`${inter.className} App p-6`}>
         <main>{children}</main>
