@@ -32,6 +32,7 @@ function normalizeGeometry(geom: Geometry): NormalizerResult {
   }
   
   if (geoType === "LineString" || geoType === "MultiLineString") {
+    // convert the line to a polygon, return the geometry
     return {
       result: lineToPolygon(geom as LineString | MultiLineString).geometry,
     };
@@ -42,7 +43,10 @@ function normalizeGeometry(geom: Geometry): NormalizerResult {
   }
 }
 /**
- * Normalizes input geojson strings to polygon geometries
+ * Normalizes input geojson strings to polygon or multipolygon geometries
+ * Or returns validation errors
+ * TODO: for feature collection support, we may want to return feature[s] or a geometry
+ * so that we can use user provided feature.properties to label them
  */
 export default function geoPolygonNormalizer(
   geoString: string
@@ -60,6 +64,9 @@ export default function geoPolygonNormalizer(
   if (!parsed.type) {
     return { error: ValidationErrors.GeoJSON };
   }
+  /**
+   * I need to test geoblaze for how it handles various CRSes (coordiante reference systems)
+   */
   if(parsed?.crs?.name?.name && parsed?.crs?.name?.name !== 'EPSG:4326') {
     return { error: ValidationErrors.CRS }
   }
