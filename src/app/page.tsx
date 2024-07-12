@@ -23,11 +23,12 @@ const haFormatter = Intl.NumberFormat("en", {
   unitDisplay: "narrow",
 });
 
-const digits = new Intl.NumberFormat("en-DE", { maximumFractionDigits: 3 });
 
 export const revalidate = 3600;
 
 export default function Home() {
+  const digits = new Intl.NumberFormat(window.navigator.language ?? 'en-de', { maximumFractionDigits: 3 });
+
   const [errorMessage, setErrorMessage] = useState<null | string>(null);
   const [statusMessage, setStatusMessage] = useState<null | string>(null);
   const [polygon, setPolygon] = useState<Polygon | MultiPolygon | null>(null);
